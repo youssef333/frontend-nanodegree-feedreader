@@ -13,6 +13,11 @@ $(function() {
     *  This suite is all about the RSS feeds definitions, 
     *  the allFeeds variable in our application.
     */
+
+    var originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+
+
     describe('RSS Feeds', function() {
         /* The first test - it tests to make sure that the
          * allFeeds variable has been defined and it is non empty
@@ -111,7 +116,6 @@ $(function() {
 
         beforeEach(function(done) {
             originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-            jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
                 loadFeed(0, function() {
                     firstFeed = $('.feed').html();     
@@ -124,7 +128,7 @@ $(function() {
             expect(firstFeed).not.toBe(secondFeed);
             setTimeout(function(){
                 done();
-                }, 9000);
+                }, 10000);
         });
 
         afterEach(function() {
