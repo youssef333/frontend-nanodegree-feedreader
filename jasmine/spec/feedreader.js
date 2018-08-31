@@ -81,10 +81,9 @@ $(function() {
 
     /* Defining a new test suite named "Initial Entries" */
     describe('Initial Entries' , function() {
-    	var feedsData ;
+    	var feedsData = 0;
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                feedsData = $('.feed .entry');
+            loadFeed(0, function() { 
                 done();
             });           
 
@@ -96,7 +95,8 @@ $(function() {
          */
 
          it('Ensure when loadFead is called, there is at least .entry element in .feed container', function(done) {
-            expect(feedsData.length >= 1 ).toBeTruthy();
+            expect(feedsData.length >= 1 ).toBeGreaterThan(0);
+            feedsData = $('.feed .entry');
             done();
          });
     });
